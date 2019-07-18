@@ -1,10 +1,17 @@
-node{
+pipeline{
+agent any
+stages{
        stage('SCM checkout'){
+       steps{
        git 'https://github.com/balajireddy8898/my-app'
+       }
     }
       stage('compile-package'){
+      steps{
      //Get maven home path
         def mvnHome= tool name: 'maven 3.3.9', type: 'maven'
     sh "${mvnHome}/usr/share/maven package"
    }
+   }
+ }
 }
